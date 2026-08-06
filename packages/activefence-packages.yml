@@ -1,0 +1,67 @@
+generated: '2026-08-06'
+method: searched
+source: https://registry.npmjs.org/ + https://pypi.org/ + https://docs.activefence.com/
+notes: >-
+  ActiveFence now publishes under the Alice brand. First-party client libraries are published to
+  npm under the @alice-io scope and to PyPI under bare names, and are linked from the SDK section
+  of docs.activefence.com. There is no Maven Central, NuGet, Go module, RubyGems, Packagist or
+  crates.io package for this provider — those registries were probed and returned nothing
+  first-party.
+packages:
+- language: python
+  registry: pypi
+  name: wonderfence-sdk
+  version: 2.1.1
+  url: https://pypi.org/project/wonderfence-sdk/
+  install: pip install wonderfence-sdk
+  repository: https://github.com/ActiveFence/activefence_client_sdk
+  requires_python: '>=3.9'
+  official: true
+  covers: WonderFence real-time guardrail evaluation of AI prompts and responses
+  linked_from: https://docs.activefence.com/
+- language: typescript
+  registry: npm
+  name: '@alice-io/wonderfence-ts-sdk'
+  version: 2.1.0
+  url: https://www.npmjs.com/package/@alice-io/wonderfence-ts-sdk
+  install: npm install @alice-io/wonderfence-ts-sdk
+  license: MIT
+  published: '2026-08-03'
+  official: true
+  covers: TypeScript client for the WonderFence Trust & Safety evaluation API
+- language: python
+  registry: pypi
+  name: parlant-alice
+  version: 0.1.5
+  url: https://pypi.org/project/parlant-alice/
+  install: pip install parlant-alice
+  repository: https://github.com/ActiveFence/parlant-alice
+  official: true
+  covers: >-
+    Framework integration that wires the Alice SDK into the Parlant open-source AI agent
+    framework; depends on wonderfence-sdk.
+- language: typescript
+  registry: npm
+  name: '@alice-io/caterpillar'
+  version: 1.0.11
+  url: https://www.npmjs.com/package/@alice-io/caterpillar
+  install: npm install -g @alice-io/caterpillar
+  repository: https://github.com/alice-dot-io/caterpillar
+  homepage: https://caterpillar.alice.io/
+  license: MIT
+  official: true
+  bin: caterpillar
+  covers: >-
+    Open-source security scanner that inspects AI agent skill files (e.g. Claude Code skills) for
+    dangerous or malicious behavior. Ships a CLI — see cli/activefence-cli.yml.
+registries_probed:
+- {registry: npm, scope: '@alice-io', result: found}
+- {registry: npm, scope: '@activefence', result: none}
+- {registry: pypi, names: [wonderfence-sdk, parlant-alice], result: found}
+- {registry: pypi, names: [activefence, activefence-sdk, alice-io], result: none}
+- {registry: maven-central, result: none}
+- {registry: nuget, result: none}
+- {registry: pkg.go.dev, result: none}
+- {registry: rubygems, result: none}
+- {registry: packagist, result: none}
+- {registry: crates.io, result: none}

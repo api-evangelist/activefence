@@ -1,0 +1,30 @@
+generated: '2026-08-06'
+method: searched
+source: https://caterpillar.alice.io/ + https://github.com/alice-dot-io/caterpillar
+name: Caterpillar
+description: >-
+  Alice's (formerly ActiveFence's) first-party open-source command-line security scanner for AI
+  agent skill files. It statically inspects skill bundles — Claude Code skills and equivalents —
+  for dangerous or malicious behavior before an agent loads them. Released publicly after Alice
+  reported catching malicious OpenClaw skills in use by roughly 6,000 users.
+scope_note: >-
+  Caterpillar is a standalone agent-security tool, not a CLI wrapper around the Alice REST API.
+  Alice publishes no CLI for the api.alice.io moderation/guardrail endpoints; those are consumed
+  through the Python and TypeScript SDKs in packages/activefence-packages.yml.
+homepage: https://caterpillar.alice.io/
+repository: https://github.com/alice-dot-io/caterpillar
+license: MIT
+version: 1.0.11
+binary: caterpillar
+install:
+- method: npm
+  command: npm install -g @alice-io/caterpillar
+  registry: https://www.npmjs.com/package/@alice-io/caterpillar
+- method: npx
+  command: npx @alice-io/caterpillar
+announcement: https://alice.io/company-news/alice-releases-caterpillar-after-catching-malicious-openclaw-skills-used-by-6-000-users
+related_reading: https://alice.io/blog/ai-skills-security
+x-evidence:
+- {url: 'https://registry.npmjs.org/@alice-io/caterpillar', http_status: 200, finding: 'bin.caterpillar -> dist/cli.js'}
+- {url: 'https://api.github.com/repos/alice-dot-io/caterpillar', http_status: 200}
+- {url: 'https://caterpillar.alice.io/', http_status: 200}

@@ -1,0 +1,98 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Alice API (formerly ActiveFence)
+  version: 1.0.0
+extends: openapi/activefence-alice-api-openapi.yml
+x-generated: '2026-08-06'
+x-method: generated
+x-source: >-
+  Derived from the harvested spec at https://docs.activefence.com/openapi.json plus the
+  artifacts in this repo. Never mutates the original — openapi/_original/ is verbatim.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-profile: https://apievangelist.com/providers/activefence
+    x-provider-slug: activefence
+    x-provider-current-brand: Alice
+    x-provider-former-brand: ActiveFence
+    x-artifact-conventions: conventions/activefence-conventions.yml
+    x-artifact-errors: errors/activefence-problem-types.yml
+    x-artifact-lifecycle: lifecycle/activefence-lifecycle.yml
+    x-artifact-data-model: data-model/activefence-data-model.yml
+    x-artifact-webhooks: asyncapi/activefence-webhooks.yml
+    x-artifact-conformance: conformance/activefence-conformance.yml
+- target: $.info
+  update:
+    x-rate-limit:
+      default: 50
+      unit: requests-per-second
+      scope: project
+      over-limit-status: 429
+      headers-published: false
+      source: https://docs.activefence.com/index.html
+- target: $.info
+  update:
+    x-error-format:
+      rfc9457: false
+      media-type: application/json
+      envelope: [statusCode, error, message, params]
+- target: $.components.securitySchemes['API Key']
+  update:
+    description: >-
+      API key issued from the Alice console under Account Settings > DATA MANAGEMENT >
+      Alice API Keys, and sent on every request in the af-api-key header. The value is shown
+      once at creation and cannot be retrieved again. Regenerating a key keeps the superseded
+      key valid for a further 12 hours to permit a rolling cutover; deleting a key takes
+      effect immediately. Keys can also be managed over the API itself via POST /v3/apikeys,
+      GET /v3/apikeys and DELETE /v3/apikeys/{id}.
+    x-rotation-grace-period: PT12H
+    x-self-service-management: true
+- target: $.paths['/v3/content/text'].post
+  update:
+    x-delivery: asynchronous
+    x-callback-fields: [callback_url, callback_key_name]
+    x-correlation-field: response_id
+    x-sync-equivalent: post-sync-content-text
+- target: $.paths['/v3/content/image'].post
+  update:
+    x-delivery: asynchronous
+    x-callback-fields: [callback_url, callback_key_name]
+    x-correlation-field: response_id
+    x-sync-equivalent: post-sync-content-image
+- target: $.paths['/v3/content/video'].post
+  update:
+    x-delivery: asynchronous
+    x-callback-fields: [callback_url, callback_key_name]
+    x-correlation-field: response_id
+    x-sync-equivalent: null
+    x-expected-latency-p90: 'video-30min ~3.5m'
+- target: $.paths['/v3/content/audio'].post
+  update:
+    x-delivery: asynchronous
+    x-callback-fields: [callback_url, callback_key_name]
+    x-correlation-field: response_id
+    x-sync-equivalent: null
+    x-expected-latency-p90: 'audio-30min ~20m'
+- target: $.paths['/sync/v3/content/text'].post
+  update:
+    x-delivery: synchronous
+    x-expected-latency: {p50: 100ms, p90: 250ms}
+- target: $.paths['/sync/v3/content/image'].post
+  update:
+    x-delivery: synchronous
+    x-expected-latency: {p50: 1s, p90: 5s}
+- target: $.paths['/redteam/assessments/'].get
+  update:
+    x-pagination:
+      style: page-number
+      params: [page, limit, sort, order]
+      default-limit: 20
+      max-limit: 100
+      response-envelope: {data: array, pagination: object}
+    x-note: The only paginated operation in this API.
+- target: $.paths['/v3/apikeys'].get
+  update:
+    x-pagination: null
+    x-note: >-
+      Returns an unbounded list. Unlike GET /redteam/assessments/, this collection operation
+      declares no page/limit parameters.

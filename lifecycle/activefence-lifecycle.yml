@@ -1,0 +1,71 @@
+generated: '2026-08-06'
+method: searched
+source: https://docs.activefence.com/openapi.json + https://alice.io/sitemap.xml
+summary: >-
+  Alice publishes an API contract but no operational-transparency surface around it. There is no
+  status page, no deprecation policy, no changelog or release-notes page, no published SLA, and
+  no roadmap. Version is expressed only as a URI path prefix and the spec's own info.version.
+  The one lifecycle commitment the provider does publish in writing is the 12-hour grace window
+  on a regenerated API key.
+versioning:
+  scheme: uri-path
+  current: v3
+  spec_version: 3.0.0
+  prefixes_in_use:
+  - {prefix: /v3/, product: ActiveFamily (content, users, collections, flags, api keys)}
+  - {prefix: /sync/v3/, product: ActiveFamily synchronous variants}
+  - {prefix: /v1/, product: WonderFence message evaluation}
+  - {prefix: /redteam/, product: WonderBuild assessments (unversioned)}
+  docs: https://docs.activefence.com/index.html
+  note: >-
+    Version prefixes are inconsistent across the two product families and the WonderBuild
+    surface carries no version segment at all.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  evidence: >-
+    No deprecation or sunset language in the OpenAPI document; no operation carries
+    deprecated: true; no /deprecation, /sunset or /changelog page in the alice.io sitemap
+    (521 URLs).
+credential_lifecycle:
+  api_key_rotation_grace: 12 hours
+  description: >-
+    Regenerating an API key overrides the current one, but the superseded key continues to be
+    accepted for a further 12 hours so a caller can roll over without downtime. After 12 hours
+    requests using the old key are rejected with 401. Deleting a key takes effect immediately.
+  source: https://docs.activefence.com/index.html#section/Authentication
+sla:
+  url: null
+  uptime_target: null
+  latency_benchmarks_published: true
+  latency_benchmarks_url: https://docs.activefence.com/index.html
+  note: >-
+    Alice publishes p50/p90 server-side latency benchmarks per media type (see
+    conventions/activefence-conventions.yml) but no availability commitment. The benchmarks are
+    described as a "general benchmark", not a contractual target.
+status_page: null
+status_page_evidence:
+- {url: 'https://status.alice.io/', result: NXDOMAIN}
+- {url: 'https://status.activefence.com/', result: NXDOMAIN}
+- {url: 'https://alice.io/status', http_status: 404}
+changelog: null
+changelog_evidence:
+- {url: 'https://alice.io/sitemap.xml', http_status: 200, finding: 'no /changelog, /release-notes or /whats-new entry among 521 URLs'}
+- {source: 'docs.activefence.com/openapi.json', finding: 'no changelog section in info.description or tag descriptions'}
+roadmap: null
+deprecated_operations: []
+brand_transition:
+  from: ActiveFence
+  to: Alice
+  announced: '2026'
+  status: in-progress
+  evidence: >-
+    The company rebranded from ActiveFence to Alice. www.activefence.com now redirects to
+    alice.io, the API server moved to api.alice.io, and the OpenAPI is titled "Alice API
+    Documentation" — but the documentation host is still docs.activefence.com, the auth header
+    is still af-api-key, and ActiveFence remains the product name for the user-generated-content
+    trust and safety line. Integrators should expect both names in the surface.
+  source: https://alice.io/llms.txt

@@ -1,0 +1,112 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/activefence-alice-api-openapi.yml
+docs: https://docs.activefence.com/index.html
+summary: >-
+  Two disjoint object graphs behind one API. The ActiveFamily graph is a moderation domain built
+  on three entity types the provider names explicitly — Content (WHAT was created), Users (WHO
+  created it) and Collections (grouped entities) — plus Flags (user reports) and the Analysis
+  result that ActiveScore attaches to any of them. The WonderSuite graph is separate: an
+  Application under assessment, an Assessment with a lifecycle status, and a Message evaluated
+  at runtime by WonderFence. Nothing joins the two graphs in the public contract.
+entity_terminology:
+  source: 'https://docs.activefence.com/index.html (Integrating with ActiveOS)'
+  item: >-
+    An instance of an entity — a specific user, content or collection sent to the platform for
+    analysis.
+  media: >-
+    The images, videos, text, audio and/or files contained IN an item. All three entity types
+    can contain one or more media. Media is a property of an item, not an entity itself.
+entities:
+- name: Content
+  description: What was created on the platform — a post, comment, review, message, article, page.
+  id_field: content_id
+  id_required: true
+  fields: [content_id, category, text, media_url, raw_media, mime_type, title, description, thumbnail_url, date_created, views_count, comments_count, user_id, contained_in, webpage_url, custom_fields, response_custom_fields]
+  operations: [post-content-text, post-sync-content-text, post-sync-content-bulk-text, post-content-image, post-sync-content-image, post-content-video, post-content-audio]
+- name: User
+  description: Who created content — the creator, publisher, reactor, follower or administrator.
+  id_field: user_id
+  fields: [user_id, custom_fields]
+  operations: [post-users-upsert]
+  note: Upsert semantics — one operation both creates and updates.
+- name: Collection
+  description: Grouped entities — a playlist, album, folder, group or channel.
+  id_field: collection
+  discriminator: collection_type
+  discriminator_location: path
+  operations: [post-collections]
+- name: Flag
+  description: A report raised by a platform user against an item.
+  id_field: flag_id
+  id_required: true
+  fields: [flag_id, flagger_id, flagged_content_id, flagged_collection_id, flagged_user_id, flagged_at, flagging_reasoning, violation, custom_violation]
+  operations: [post-flags]
+- name: Analysis
+  description: >-
+    The ActiveScore result for an item. Returned inline by the synchronous endpoints and posted
+    to callback_url by the asynchronous ones.
+  id_field: response_id
+  fields: [response_id, entity_id, entity_type, violation_types, risk_score, confidence, language, analysis_description, detection_type, analyzed_violations]
+  note: >-
+    risk_score is 0.1-1 and is only emitted for a violation type when it clears 0.1.
+    detection_type is only present with value "manual", meaning a human reviewer decided it.
+- name: ApiKey
+  description: A credential used in the af-api-key header.
+  id_field: id
+  operations: [post-generate-api-key, get-api-keys, delete-api-key]
+- name: Application
+  product: WonderBuild
+  description: A GenAI application registered for adversarial assessment.
+  id_field: applicationId
+  fields: [applicationId, applicationName]
+- name: Assessment
+  product: WonderBuild
+  description: A red-team run against an Application.
+  id_field: assessmentId
+  id_format: uuid
+  fields: [assessmentId, applicationName, versionName, name, status, createdAt, lastUpdatedAt, createdBy]
+  status_values: [ready, pending, in_progress, generating_report, completed, failed]
+  operations: [get-assessments, run-assessment, clone-and-run-assessment, run-assessment-preset]
+- name: Message
+  product: WonderFence
+  description: A single GenAI prompt or response evaluated at runtime against guardrail policy.
+  fields: [text, message_type, session_id, user_id, model_context, app_name, external_moderation]
+  operations: [post-genai-evaluate]
+  note: >-
+    session_id and user_id are required, so WonderFence evaluations are always scoped to a
+    conversation and an end user — this is the join key for multi-turn attack detection.
+relationships:
+- {from: Content, to: User, type: belongs_to, via: user_id, evidence: 'content request body carries user_id'}
+- {from: Content, to: Collection, type: belongs_to, via: contained_in, evidence: 'content request body carries contained_in'}
+- {from: Collection, to: Content, type: has_many, via: contained_in, inverse_of: 'Content.contained_in'}
+- {from: Flag, to: User, type: belongs_to, via: flagger_id, description: who raised the flag}
+- {from: Flag, to: Content, type: references, via: flagged_content_id}
+- {from: Flag, to: Collection, type: references, via: flagged_collection_id}
+- {from: Flag, to: User, type: references, via: flagged_user_id, description: who was flagged}
+- {from: Analysis, to: Content, type: belongs_to, via: 'entity_id + entity_type', description: entity_type discriminates which entity the analysis is about}
+- {from: Analysis, to: User, type: belongs_to, via: 'entity_id + entity_type'}
+- {from: Analysis, to: Collection, type: belongs_to, via: 'entity_id + entity_type'}
+- {from: Assessment, to: Application, type: belongs_to, via: applicationId}
+- {from: Application, to: Assessment, type: has_many, via: applicationId}
+- {from: Message, to: User, type: belongs_to, via: user_id}
+- {from: Message, to: Message, type: grouped_by, via: session_id, description: session_id groups a multi-turn conversation}
+polymorphism:
+  discriminator_field: entity_type
+  values: [content, users, collections]
+  note: >-
+    entity_type on an Analysis names which of the three entity types the entity_id refers to.
+    This is the only polymorphic reference in the model.
+extensibility:
+  custom_fields: >-
+    Content, User and Collection all accept a free-form custom_fields object for
+    customer-specific attributes.
+  response_custom_fields: >-
+    Content additionally accepts response_custom_fields — values echoed back on the analysis
+    result, so a customer can round-trip its own correlation data through an async callback.
+id_prefixes:
+  note: >-
+    Alice uses no typed id prefixes. Content, user and collection ids are customer-supplied
+    opaque strings. assessmentId is a UUID (example 01992ed0-71cf-750a-83bf-f7406ca950dc).
+    response_id is platform-generated and opaque.
+render: null

@@ -1,0 +1,67 @@
+generated: '2026-08-06'
+method: probed
+source: live GET of /.well-known/* on every apis.yml + OpenAPI servers[] host
+summary: >-
+  No /.well-known/ discovery document is served on any ActiveFence/Alice host. The API host
+  (api.alice.io) and the console host (app.alice.io) return a clean 404 for every probed path.
+  The docs host (docs.activefence.com / docs.alice.io) returns 403 from its CDN for all
+  /.well-known/* and /llms.txt paths. The marketing host www.activefence.com answers HTTP 200
+  with a ~297KB HTML single-page-app shell for EVERY /.well-known/* path — a catch-all, not a
+  discovery document — and is recorded here as a false positive so a later round does not
+  mistake it for a hit. The only agent-discovery surface this provider actually publishes is
+  llms.txt, served from the marketing host at https://alice.io/llms.txt (see llms/).
+hosts:
+- host: https://api.alice.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://alice.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /llms.txt, status: 200, content_type: text/plain, bytes: 13980, file: ../llms/activefence-llms.txt}
+- host: https://docs.activefence.com
+  note: CDN returns 403 application/xml for the entire /.well-known/ namespace and /llms.txt
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+  - {path: /llms.txt, status: 403}
+  - {path: /openapi.json, status: 200, content_type: application/json, bytes: 120769, file: ../openapi/_original/activefence-openapi-original.json}
+- host: https://docs.alice.io
+  note: same CDN behaviour as docs.activefence.com
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+- host: https://app.alice.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://www.activefence.com
+  note: >-
+    REJECTED AS FALSE POSITIVE. Every /.well-known/* path returns HTTP 200 with an identical
+    297,648-byte text/html SPA shell. No path returns JSON. Recorded, not credited.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 200, content_type: 'text/html; charset=utf-8', verdict: spa-catch-all}
+  - {path: /.well-known/api-catalog, status: 200, content_type: 'text/html; charset=utf-8', verdict: spa-catch-all}
+  - {path: /.well-known/ai-plugin.json, status: 200, content_type: 'text/html; charset=utf-8', verdict: spa-catch-all}
+  - {path: /.well-known/agent-card.json, status: 200, content_type: 'text/html; charset=utf-8', verdict: spa-catch-all}
+  - {path: /.well-known/agent.json, status: 200, content_type: 'text/html; charset=utf-8', verdict: spa-catch-all}
+  - {path: /llms.txt, status: 404}
+documents_found: 0
+security_txt: null
+agent_card: null

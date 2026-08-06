@@ -1,0 +1,46 @@
+generated: '2026-08-06'
+method: generated
+source: openapi/activefence-alice-api-openapi.yml
+provider: ActiveFence (Alice)
+note: >-
+  Alice publishes no AGENTS.md and no skill files of its own — the GitHub org (3 public repos)
+  and the docs host were searched. These are generated from the provider's own OpenAPI, with
+  every operationId verified verbatim against the harvested spec, plus the conventions, error
+  and webhook rules captured elsewhere in this repo.
+skills:
+- file: activefence-moderate-user-content.md
+  name: Moderate user-generated content with ActiveScore
+  description: >-
+    Submit text, image, video or audio for risk scoring; choose the synchronous pre-publish gate
+    or the asynchronous callback path; interpret risk_score and violation_type keys.
+  api: openapi/activefence-alice-api-openapi.yml
+  product: ActiveFamily
+  operations:
+  - post-sync-content-text
+  - post-sync-content-bulk-text
+  - post-sync-content-image
+  - post-content-text
+  - post-content-image
+  - post-content-video
+  - post-content-audio
+- file: activefence-guard-genai-messages.md
+  name: Guard GenAI prompts and responses with WonderFence
+  description: >-
+    Place a runtime guardrail on both sides of an LLM call to catch prompt injection,
+    jailbreaks, PII exposure and denied topics, with session-scoped multi-turn detection.
+  api: openapi/activefence-alice-api-openapi.yml
+  product: WonderFence
+  operations:
+  - post-genai-evaluate
+- file: activefence-run-redteam-assessment.md
+  name: Run a WonderBuild red-team assessment
+  description: >-
+    Drive pre-deployment adversarial testing from CI — launch from a preset, clone-and-run for
+    regression, and poll the assessment status lifecycle as a release gate.
+  api: openapi/activefence-alice-api-openapi.yml
+  product: WonderBuild
+  operations:
+  - get-assessments
+  - run-assessment
+  - clone-and-run-assessment
+  - run-assessment-preset

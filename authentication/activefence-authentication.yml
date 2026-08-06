@@ -1,0 +1,16 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/activefence-alice-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: API Key
+  type: apiKey
+  in: header
+  parameter: af-api-key
+  description: ''
+  sources:
+  - openapi/activefence-alice-api-openapi.yml

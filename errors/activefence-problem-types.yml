@@ -1,0 +1,83 @@
+generated: '2026-08-06'
+method: derived
+source: openapi/activefence-alice-api-openapi.yml
+docs: https://docs.activefence.com/index.html
+format: vendor-json
+rfc9457: false
+rfc9457_note: >-
+  Alice does not use application/problem+json. Errors are returned as a plain application/json
+  object with a vendor-specific envelope. Recorded honestly rather than reshaped — the catalog
+  below reproduces the envelope the spec actually declares.
+envelope:
+  content_type: application/json
+  fields:
+  - {name: statusCode, type: number, description: HTTP status repeated in the body}
+  - {name: error, type: string, description: Reason phrase, e.g. "Bad Request", "Unauthorized"}
+  - {name: message, type: string, description: Human-readable detail}
+  - {name: params, type: object, description: Present on validation failures}
+  - {name: params.body.source, type: string, description: 'Which part of the request failed, e.g. "body"'}
+  - {name: params.body.keys, type: array, description: The offending field names}
+  - {name: params.body.message, type: string, description: Field-level validation message}
+inline_violation_error:
+  schema: violation_error
+  description: >-
+    A second, narrower error shape carried inside analysis results for a single violation that
+    could not be processed (for example an unsupported media type on one item of a bulk request).
+  fields: [violation, status, type, message]
+  example: {status: 400, type: Bad request, message: 'media type invalid: '}
+problems:
+- status: 400
+  title: Bad Request
+  description: >-
+    Request body failed validation. params.body.keys names the offending fields and
+    params.body.message carries the validator text.
+  example_message: '"text" is required'
+  remediation: >-
+    Correct the named fields against the operation's requestBody schema and resend. Not
+    retryable unchanged.
+  source_component: '#/components/responses/400'
+  applies_to_operations:
+  - post-content-text
+  - post-sync-content-text
+  - post-sync-content-bulk-text
+  - post-sync-content-image
+  - post-content-image
+  - post-content-video
+  - post-content-audio
+  - post-users-upsert
+  - post-collections
+  - post-flags
+  - post-generate-api-key
+  - post-genai-evaluate
+  - get-assessments
+- status: 401
+  title: Unauthorized
+  description: >-
+    The af-api-key header is missing, malformed, deleted, or is a regenerated key's predecessor
+    more than 12 hours past rotation.
+  example_message: Invalid credentials
+  remediation: >-
+    Send a current key in the af-api-key header. If the key was recently regenerated, the old
+    key expires 12 hours after rotation. Generate a replacement in the console under
+    Account Settings > DATA MANAGEMENT > Alice API Keys, or via POST /v3/apikeys.
+  source_component: '#/components/responses/401'
+  applies_to_operations: all
+- status: 429
+  title: Too Many Requests
+  description: >-
+    Project exceeded its request-rate ceiling. The documented default is 50 requests per second
+    per project.
+  example_message: Too Many Requests
+  remediation: >-
+    Back off and retry. No RateLimit-* or Retry-After headers are documented, so a client must
+    use its own backoff schedule. Contact the account manager to raise the ceiling.
+  source_component: '#/components/responses/429'
+  applies_to_operations: all
+coverage:
+  operations_total: 18
+  operations_with_4xx: 18
+  distinct_statuses: [400, 401, 429]
+  gaps: >-
+    No 403, 404, 409, 413, 415, 422 or 5xx responses are declared anywhere in the spec, including
+    on DELETE /v3/apikeys/{id} and POST /redteam/assessments/run/{id} which take path identifiers
+    and would be expected to return 404. Clients should treat undeclared statuses as possible.

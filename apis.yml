@@ -1,23 +1,150 @@
 aid: activefence
 name: ActiveFence
-description: 'ActiveFence is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  ActiveFence — now operating as Alice — is an AI security, safety and trust & safety company
+  headquartered in New York and Tel Aviv. It sells two product families through one REST API at
+  api.alice.io: ActiveFamily (ActiveScore automated detection plus the ActiveOS moderation
+  workbench) for user-generated-content trust and safety across text, image, video and audio in
+  120+ languages and 20+ abuse areas; and WonderSuite for generative-AI protection — WonderBuild
+  (pre-deployment red teaming and adversarial assessment of models, apps and agents), WonderFence
+  (real-time runtime guardrails that evaluate prompts and responses for prompt injection,
+  jailbreaks, PII leakage and policy violations) and WonderCheck (ongoing post-launch evaluation
+  and drift detection). The API offers synchronous endpoints for low-latency moderation and
+  asynchronous endpoints that acknowledge receipt and post results back to a customer-configured
+  callback URL, plus configurable action webhooks fired from the ActiveOS moderation view or an
+  automated workflow. Authentication is a single af-api-key header issued from the platform
+  console; the default rate limit is 50 requests per second. First-party SDKs ship for Python
+  (wonderfence-sdk) and TypeScript (@alice-io/wonderfence-ts-sdk), with a Parlant integration and
+  the open-source Caterpillar agent-skill security scanner. Alice is SOC 2 and ISO 27001 certified.
+image: https://cdn.prod.website-files.com/69005ca0f0832195cbc1370c/6966208e49b12596bab0f42e_Group%201707480796.png
 url: https://raw.githubusercontent.com/api-evangelist/activefence/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-08-06'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
+specificationVersion: '0.21'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
-- Company
-apis: []
+- ai-safety
+- ai-security
+- trust-and-safety
+- content-moderation
+- guardrails
+- red-teaming
+- llm-security
+- prompt-injection
+- ai-governance
+- risk-scoring
+- user-generated-content
+- child-safety
+apis:
+- name: Alice API (formerly ActiveFence)
+  description: >-
+    Single REST API covering both Alice product families. ActiveFamily endpoints accept text,
+    image, video and audio items — plus users, collections and user flags — and return per-violation
+    risk scores between 0.1 and 1 across abuse areas such as hate speech, harassment, child abuse,
+    self-harm, adult content and unauthorised weapon sales. Text and image have synchronous
+    variants (p50 ~100ms text / ~1s image); video and audio are asynchronous and post results to a
+    callback URL. WonderFence exposes a message-evaluation endpoint for GenAI prompt/response
+    guardrails, and WonderBuild exposes red-team assessment listing and run operations. API-key
+    management (create, list, delete) is also exposed over the API.
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - ai-safety
+  - ai-security
+  - trust-and-safety
+  - content-moderation
+  - guardrails
+  - red-teaming
+  - llm-security
+  - risk-scoring
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-alice-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
+  - type: Overlay
+    url: overlays/activefence-alice-api-overlay.yaml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/activefence-agentic-access.yml
 - type: Website
-  url: https://www.hiive.com/securities/activefence-stock
+  url: https://alice.io/
+- type: DeveloperPortal
+  url: https://docs.activefence.com/index.html
+- type: Documentation
+  url: https://docs.activefence.com/index.html
+- type: APIReference
+  url: https://docs.activefence.com/index.html
+- type: GettingStarted
+  url: https://docs.activefence.com/index.html#section/Authentication
+- type: Support
+  url: https://alice.io/contact-us
+- type: Blog
+  url: https://alice.io/blog
+- type: GitHubOrganization
+  url: https://github.com/ActiveFence
+- type: Login
+  url: https://app.alice.io/
+- type: TermsOfService
+  url: https://alice.io/terms-of-use
+- type: PrivacyPolicy
+  url: https://alice.io/privacy-policy
+- type: Postman
+  url: https://www.postman.com/activefence-demo-team
+- type: LLMsTxt
+  url: llms/activefence-llms.txt
+- type: Packages
+  url: packages/activefence-packages.yml
+- type: SDKs
+  url: packages/activefence-packages.yml
+- type: CLI
+  url: cli/activefence-cli.yml
+- type: Authentication
+  url: authentication/activefence-authentication.yml
+- type: Conventions
+  url: conventions/activefence-conventions.yml
+- type: ErrorCatalog
+  url: errors/activefence-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/activefence-lifecycle.yml
+- type: Conformance
+  url: conformance/activefence-conformance.yml
+- type: Compliance
+  url: conformance/activefence-conformance.yml
+- type: DomainSecurity
+  url: security/activefence-domain-security.yml
+- type: WellKnown
+  url: well-known/activefence-well-known.yml
+- type: Webhooks
+  url: asyncapi/activefence-webhooks.yml
+- type: DataModel
+  url: data-model/activefence-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/activefence-alice-api-overlay.yaml

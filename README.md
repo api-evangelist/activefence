@@ -42,5 +42,38 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-ActiveFence is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
+ActiveFence — now operating as **Alice** — is an AI security, safety and trust & safety company
+headquartered in New York and Tel Aviv. It sells two product families through one REST API at
+`api.alice.io`:
+
+- **ActiveFamily** — ActiveScore automated detection plus the ActiveOS moderation workbench, for
+  user-generated-content trust and safety across text, image, video and audio in 120+ languages
+  and 20+ abuse areas.
+- **WonderSuite** — generative-AI protection: **WonderBuild** (pre-deployment red teaming),
+  **WonderFence** (real-time runtime guardrails for prompts and responses) and **WonderCheck**
+  (post-launch evaluation and drift detection).
+
+## What this profile is built from
+
+| Surface | Location | Status |
+|---|---|---|
+| OpenAPI 3.0.0 (18 operations) | `https://docs.activefence.com/openapi.json` | 200 — harvested verbatim to `openapi/_original/` |
+| llms.txt | `https://alice.io/llms.txt` | 200 — saved verbatim to `llms/` |
+| Public Postman collection | `https://www.postman.com/activefence-demo-team` | 200 |
+| Python SDK | `wonderfence-sdk` on PyPI | first-party |
+| TypeScript SDK | `@alice-io/wonderfence-ts-sdk` on npm | first-party |
+| CLI | `@alice-io/caterpillar` (agent-skill security scanner) | first-party |
+| Certifications | SOC 2 Type II, ISO 27001 | badged on `alice.io`, asserted in `llms.txt` |
+
+**Not published by this provider:** no `/.well-known/` documents on any host, no `security.txt`,
+no A2A agent card, no hosted MCP server, no status page, no changelog, no deprecation policy, no
+AsyncAPI, and no idempotency contract. Each of those is recorded with the URL probed and the
+status it returned — see `well-known/`, `lifecycle/` and `conformance/`.
+
+**Brand transition note:** `www.activefence.com` now redirects to `alice.io`, but the docs host is
+still `docs.activefence.com` and the auth header is still `af-api-key`. Integrators should expect
+both names across the surface.
+
+- https://alice.io/
+- https://docs.activefence.com/index.html
 - https://www.hiive.com/securities/activefence-stock

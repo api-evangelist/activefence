@@ -1,0 +1,87 @@
+generated: '2026-08-06'
+method: derived
+status: candidate
+source: openapi/activefence-alice-api-openapi.yml
+published_server: null
+published_server_note: >-
+  NO official hosted or remote MCP server was found for ActiveFence/Alice. This file is a
+  DERIVED CANDIDATE tool surface computed from the provider's OpenAPI so an integrator can
+  stand one up. It is deliberately NOT wired as a `type: MCPServer` pointer in apis.yml —
+  the provider does not publish an MCP server and must not be credited with one.
+probes:
+- {url: 'https://mcp.alice.io/', result: NXDOMAIN}
+- {url: 'https://api.alice.io/mcp', http_status: 404}
+- {url: 'https://alice.io/.well-known/mcp.json', http_status: 404}
+- {source: 'https://api.github.com/orgs/ActiveFence/repos', http_status: 200, finding: '3 public repos — OTLP-GitHubAction-Exporter, parlant-alice, bull. No MCP server.'}
+- {source: 'https://api.github.com/orgs/alice-dot-io/repos', http_status: 200, finding: '1 public repo — caterpillar. No MCP server.'}
+- {source: 'https://alice.io/llms.txt', http_status: 200, finding: 'lists integrations for Bedrock/AgentCore, Strands, LangGraph, Copilot Studio, Databricks, NeMo Guardrails and Parlant — none of them an MCP server.'}
+- {source: 'npm registry search @alice-io', result: '2 packages, neither an MCP server'}
+transport_if_built: http
+auth_if_built:
+  scheme: apiKey
+  header: af-api-key
+  note: inherits the REST contract; there is no OAuth surface to negotiate
+tools:
+- name: moderate_text
+  description: Analyze a text item for policy violations and return risk scores. Blocks until analysis completes.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-sync-content-text
+- name: moderate_text_bulk
+  description: Analyze a batch of text items in one synchronous call.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-sync-content-bulk-text
+- name: moderate_image
+  description: Analyze an image for policy violations and return risk scores. Blocks until analysis completes.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-sync-content-image
+- name: submit_text_for_analysis
+  description: Submit text for asynchronous analysis; result is posted to a callback URL.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-content-text
+- name: submit_image_for_analysis
+  description: Submit an image for asynchronous analysis.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-content-image
+- name: submit_video_for_analysis
+  description: Submit a video for asynchronous analysis.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-content-video
+- name: submit_audio_for_analysis
+  description: Submit audio for asynchronous analysis.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-content-audio
+- name: upsert_users
+  description: Create or update end-user records on the moderation platform.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-users-upsert
+- name: upsert_collection
+  description: Create or update a collection (playlist, album, folder, group, channel).
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-collections
+- name: report_flag
+  description: Send a user-raised flag against a content item, collection or user.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-flags
+- name: evaluate_genai_message
+  description: Evaluate a GenAI prompt or response against WonderFence runtime guardrails.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-genai-evaluate
+- name: list_assessments
+  description: List WonderBuild red-team assessments with filters and pagination.
+  source_operation: openapi/activefence-alice-api-openapi.yml#get-assessments
+- name: run_assessment
+  description: Run an existing WonderBuild red-team assessment by id.
+  source_operation: openapi/activefence-alice-api-openapi.yml#run-assessment
+- name: clone_and_run_assessment
+  description: Clone an existing assessment and run the copy.
+  source_operation: openapi/activefence-alice-api-openapi.yml#clone-and-run-assessment
+- name: run_assessment_from_preset
+  description: Run a red-team assessment from a preset configuration.
+  source_operation: openapi/activefence-alice-api-openapi.yml#run-assessment-preset
+- name: create_api_key
+  description: Generate a new Alice API key.
+  source_operation: openapi/activefence-alice-api-openapi.yml#post-generate-api-key
+- name: list_api_keys
+  description: List existing Alice API keys.
+  source_operation: openapi/activefence-alice-api-openapi.yml#get-api-keys
+- name: delete_api_key
+  description: Delete an Alice API key by id.
+  source_operation: openapi/activefence-alice-api-openapi.yml#delete-api-key
+excluded_from_candidate_surface:
+  note: >-
+    The three api-key tools are included for completeness but SHOULD NOT be exposed to an
+    autonomous agent — see agentic-access/activefence-agentic-access.yml, where key management
+    is the operation class that carries the highest consequence in this API.
+coverage:
+  rest_operations_total: 18
+  tools_derived: 18
+  tools_published_by_provider: 0

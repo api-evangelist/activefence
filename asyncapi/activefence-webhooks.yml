@@ -1,0 +1,121 @@
+generated: '2026-08-06'
+method: searched
+source: https://docs.activefence.com/openapi.json
+docs: https://docs.activefence.com/index.html
+spec_type: Webhooks
+asyncapi_published: false
+asyncapi_note: >-
+  Alice publishes NO AsyncAPI document. Probed /asyncapi.yaml and /asyncapi.json on
+  api.alice.io and docs.activefence.com and searched the GitHub org — nothing. But the provider
+  does document a genuine event surface in two distinct shapes, captured below as a webhook
+  catalog rather than fabricated into a spec.
+summary: >-
+  Two separate outbound-HTTP mechanisms. (1) Async analysis callbacks: six content/entity
+  endpoints accept the request, return an acknowledgement immediately, and later POST the
+  completed risk analysis to a customer-supplied callback_url. (2) Action webhooks: customer-
+  defined outbound calls fired from the ActiveOS Moderation View by a human clicking a button,
+  or automatically by an Automated Workflow — these call the CUSTOMER's own API or a third-party
+  system to enact a moderation decision (ban a user, delete a post, etc.).
+surfaces:
+- id: analysis-callbacks
+  kind: provider-to-customer callback
+  direction: outbound from Alice
+  transport: HTTP POST
+  trigger: completion of an asynchronous content analysis
+  registration:
+    method: per-request field
+    field: callback_url
+    description: Callback URL where Alice will post the response to.
+  authentication:
+    method: named key injected into the callback request
+    field: callback_key_name
+    description: >-
+      Names a key defined in the platform's Auth Management section. That key is added to the
+      header or query params of the callback request Alice sends, so the receiving endpoint can
+      authenticate the caller.
+    signature_scheme: none_documented
+    note: >-
+      This is a shared-secret injection, not a signed payload. No HMAC signature header, no
+      timestamp, and no replay-protection scheme is documented.
+  correlation:
+    field: response_id
+    description: >-
+      All callbacks for a request carry the same response_id that was returned in the
+      synchronous acknowledgement, so the receiver can join results back to the submission.
+  suppression_rule: >-
+    The acknowledgement returns analyzed_violations[] — the violation types that will be
+    analyzed for this item given the account configuration and media type. If that array comes
+    back EMPTY, no callback will be sent at all. A receiver must not block waiting on one.
+  producing_operations:
+  - {operationId: post-content-text, path: /v3/content/text, media: text}
+  - {operationId: post-content-image, path: /v3/content/image, media: image}
+  - {operationId: post-content-video, path: /v3/content/video, media: video}
+  - {operationId: post-content-audio, path: /v3/content/audio, media: audio}
+  - {operationId: post-users-upsert, path: /v3/users/upsert, media: user entity}
+  - {operationId: post-collections, path: '/v3/collections/{collection_type}', media: collection entity}
+  payload:
+    description: >-
+      The completed analysis for the submitted item — the same result body the synchronous
+      endpoints return inline.
+    fields:
+    - {name: response_id, type: string, description: correlation id, matches the acknowledgement}
+    - {name: entity_id, type: string}
+    - {name: entity_type, type: string}
+    - {name: violation_types, type: array, description: per-violation results}
+    - {name: risk_score, type: number, range: 0.1-1, description: probability the item violates a given violation type; only returned above 0.1}
+    - {name: confidence, type: number}
+    - {name: language, type: string}
+    - {name: analysis_description, type: string}
+    - {name: detection_type, type: string, enum: [manual], description: present only when a human reviewer made the decision}
+    - {name: custom_fields, type: object}
+    schema_source: openapi/activefence-alice-api-openapi.yml#/components/schemas
+  expected_latency:
+    note: driven by media type, see conventions/activefence-conventions.yml latency_benchmarks
+    worst_case: audio-30min p90 ~20 minutes
+- id: action-webhooks
+  kind: provider-to-customer action trigger
+  direction: outbound from Alice
+  transport: HTTP
+  trigger:
+  - manual — a moderator clicks a button in the ActiveOS Moderation View
+  - automatic — an Automated Workflow defined by the customer fires
+  purpose: >-
+    Enact a moderation decision on the customer's own platform or on a third-party system. The
+    customer must expose an API that performs the action; Alice calls it.
+  registration:
+    method: configured in the Alice platform console
+    self_service: true
+  catalog_published: false
+  catalog_note: >-
+    Alice documents the mechanism but publishes no catalog of event names, payload schemas or
+    retry semantics for action webhooks. Those are customer-defined per deployment.
+event_catalog_completeness:
+  named_event_types: 0
+  note: >-
+    Neither surface publishes discrete named event types. Analysis callbacks are keyed by the
+    violation types in violation_types[] — the vocabulary below is the closest thing to an
+    event taxonomy the provider publishes.
+violation_type_vocabulary:
+  source: 'https://docs.activefence.com/index.html (WonderFence + General tag descriptions)'
+  security:
+  - {key: prompt_attack.impersonation, label: Impersonation}
+  - {key: prompt_attack.system_prompt_override, label: System Prompt Override}
+  - {key: prompt_injection.general_encoding, label: Encoding}
+  - {key: prompt_injection.general, label: Prompt Injection}
+  privacy:
+  - {key: privacy_violation.PII, label: PII}
+  safety:
+  - {key: abusive_or_harmful.harassment_or_bullying, label: Harassment or Bullying}
+  - {key: abusive_or_harmful.profanity, label: Profanity}
+  - {key: abusive_or_harmful.hate_speech, label: Hate Speech}
+  - {key: abusive_or_harmful.child_abuse, label: Child Abuse}
+  - {key: self_harm.general, label: Suicide and Self-harm}
+  - {key: adult_content.general, label: Adult Content}
+  - {key: unauthorised_sales.weapons, label: Weapons}
+  - {key: deny_topics.legal_advice, label: Legal Advice}
+  - {key: deny_topics.financial_advice, label: Financial Advice}
+probes:
+- {url: 'https://api.alice.io/asyncapi.json', http_status: 404}
+- {url: 'https://api.alice.io/asyncapi.yaml', http_status: 404}
+- {url: 'https://docs.activefence.com/asyncapi.json', http_status: 403}
+- {source: 'https://api.github.com/orgs/ActiveFence/repos', http_status: 200, finding: '3 public repos, none containing an AsyncAPI document'}
