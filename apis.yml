@@ -42,30 +42,18 @@ tags:
 - user-generated-content
 - child-safety
 apis:
-- name: Alice API (formerly ActiveFence)
+- aid: activefence:activefence-api-keys-api
+  name: ActiveFence api keys API
   description: >-
-    Single REST API covering both Alice product families. ActiveFamily endpoints accept text,
-    image, video and audio items — plus users, collections and user flags — and return per-violation
-    risk scores between 0.1 and 1 across abuse areas such as hate speech, harassment, child abuse,
-    self-harm, adult content and unauthorised weapon sales. Text and image have synchronous
-    variants (p50 ~100ms text / ~1s image); video and audio are asynchronous and post results to a
-    callback URL. WonderFence exposes a message-evaluation endpoint for GenAI prompt/response
-    guardrails, and WonderBuild exposes red-team assessment listing and run operations. API-key
-    management (create, list, delete) is also exposed over the API.
+    Provides APIs to manage API key(s), including adding new keys, listing existing keys, and deleting
+    keys.
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
-  - ai-safety
-  - ai-security
-  - trust-and-safety
-  - content-moderation
-  - guardrails
-  - red-teaming
-  - llm-security
-  - risk-scoring
+  - api keys
   properties:
   - type: OpenAPI
-    url: openapi/activefence-alice-api-openapi.yml
+    url: openapi/activefence-api-keys-api-openapi.yml
   - type: Documentation
     url: https://docs.activefence.com/index.html
   - type: APIReference
@@ -78,8 +66,204 @@ apis:
     url: errors/activefence-problem-types.yml
   - type: DataModel
     url: data-model/activefence-data-model.yml
-  - type: Overlay
-    url: overlays/activefence-alice-api-overlay.yaml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
+- aid: activefence:activefence-collection-api
+  name: ActiveFence Collection API
+  description: >-
+    Collection API Represents grouped entities. A collection is comprised of multiple items grouped together
+    in a playlist, album, folder, group or channel on your platform. For example, a playlist of videos
+    (holding a list of videos), a discussion group (holding a list of posts), a folder (holding a list
+    of files) or a channel.
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - collection
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-collection-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
+- aid: activefence:activefence-content-api
+  name: ActiveFence Content API
+  description: >-
+    Content APIs Represents WHAT content was created on your platform, such as a post, comment, review,
+    message, article or data. For example, a web page containing a video, a customer review of a product,
+    a comment and so on.
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-content-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
+- aid: activefence:activefence-flags-api
+  name: ActiveFence Flags API
+  description: >-
+    The Flags API enables you to send details about the flag made on an item on your platform to the Alice
+    T&S platform.
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - flags
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-flags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
+- aid: activefence:activefence-users-api
+  name: ActiveFence Users API
+  description: >-
+    Users API Represents WHO created content on your platform. These are the end users that have uploaded
+    content to your platform, meaning the people who are the creators or publishers of the content. For
+    example, the account used for creating an image. A user can also be someone who likes, reacts, follows,
+    administers, shares items and so on.
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
+- aid: activefence:activefence-wonderbuild-api
+  name: ActiveFence Wonder Build API
+  description: >-
+    WonderBuild provides red teaming and security assessment tools for AI applications. APIs for running
+    comprehensive security assessments on gen-AI applications.
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - WonderBuild
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-wonderbuild-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
+  - type: Webhooks
+    url: asyncapi/activefence-webhooks.yml
+  - type: Postman
+    url: https://www.postman.com/activefence-demo-team
+- aid: activefence:activefence-wonderfence-api
+  name: ActiveFence Wonder Fence API
+  description: >-
+    WonderFence provides real-time guardrails for AI-generated content. APIs for evaluating and moderating
+    AI-generated content and interactions to protect against harmful outputs and prompt attacks.
+
+
+    ## API Response Key Mapping
+
+    The following table is a mapping between violation types, their categories, and their corresponding
+    API response keys:
+
+
+    Violation Type | Category | API Response Key
+
+    ---------------|----------|----------------
+     Impersonation | Security | prompt_attack.impersonation
+     System Prompt Override | Security | prompt_attack.system_prompt_override
+     Encoding | Security | prompt_injection.general_encoding
+     Prompt Injection | Security | prompt_injection.general
+     PII | Privacy | privacy_violation.PII
+     Harassment or Bullying | Safety | abusive_or_harmful.harassment_or_bullying
+     Profanity | Safety | abusive_or_harmful.profanity
+     Hate Speech | Safety | abusive_or_harmful.hate_speech
+     Child Abuse | Safety | abusive_or_harmful.child_abuse
+     Suicide and Self-harm | Safety | self_harm.general
+     Adult Content | Safety | adult_content.general
+     Weapons | Safety | unauthorised_sales.weapons
+     Legal Advice | Safety | deny_topics.legal_advice
+     Financial Advice | Safety | deny_topics.financial_advice
+  humanURL: https://docs.activefence.com/index.html
+  baseURL: https://api.alice.io
+  tags:
+  - WonderFence
+  properties:
+  - type: OpenAPI
+    url: openapi/activefence-wonderfence-api-openapi.yml
+  - type: Documentation
+    url: https://docs.activefence.com/index.html
+  - type: APIReference
+    url: https://docs.activefence.com/index.html
+  - type: Authentication
+    url: authentication/activefence-authentication.yml
+  - type: Conventions
+    url: conventions/activefence-conventions.yml
+  - type: ErrorCatalog
+    url: errors/activefence-problem-types.yml
+  - type: DataModel
+    url: data-model/activefence-data-model.yml
   - type: Webhooks
     url: asyncapi/activefence-webhooks.yml
   - type: Postman
@@ -90,6 +274,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/activefence-mcp.yml
 - type: AgenticAccess
   url: agentic-access/activefence-agentic-access.yml
 - type: Website
