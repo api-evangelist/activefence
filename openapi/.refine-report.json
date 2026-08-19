@@ -1,0 +1,35 @@
+{
+  "provider": "activefence",
+  "sources": [
+    "activefence-api-keys-api-openapi.yml",
+    "activefence-collection-api-openapi.yml",
+    "activefence-content-api-openapi.yml",
+    "activefence-flags-api-openapi.yml",
+    "activefence-users-api-openapi.yml",
+    "activefence-wonderbuild-api-openapi.yml",
+    "activefence-wonderfence-api-openapi.yml"
+  ],
+  "outputs": [
+    "activefence-api-keys-api-openapi.yml",
+    "activefence-collection-api-openapi.yml",
+    "activefence-content-api-openapi.yml",
+    "activefence-flags-api-openapi.yml",
+    "activefence-users-api-openapi.yml",
+    "activefence-wonderbuild-api-openapi.yml",
+    "activefence-wonderfence-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "activefence-api-keys-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "activefence-collection-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "activefence-content-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "activefence-flags-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "activefence-users-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "activefence-wonderbuild-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "activefence-wonderfence-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Key)",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

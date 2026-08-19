@@ -1,0 +1,1662 @@
+{
+  "item": [
+    {
+      "id": "6d796e9b-c147-475c-b469-3362bfeabc3a",
+      "name": "content",
+      "description": {
+        "content": "Content APIs Represents WHAT content was created on your platform, such as a post, comment, review, message, article or data. For example, a web page containing a video, a customer review of a product, a comment and so on.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf63619f-0fca-4712-b94c-0137d0320ed7",
+          "name": "Text API - Asynchronous",
+          "request": {
+            "name": "Text API - Asynchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/v3/content/text\n\nThe Asynchronous Text API enables you to send a text item and its context to the Alice T&S platform, which will analyze it, detect violations and return an array of one or more violations detected in the item in a callback. \n\nIf the ID of this text item already exists, then its details are updated.\n\nThe T&S platform analyzes the **text** and **thumbnail_url** fields.\n\n**NOTE** - **Text length is limited to 10,240 characters**. Longer texts should be split into segments (by punctuation or spacing) and sent in a separate request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                "text"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"webpage_url\": \"<uri>\",\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53864392-d58d-4caf-8e6d-fcd08aa97d6d",
+              "name": "Example response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"webpage_url\": \"<uri>\",\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"analyzed_violations\": [\n    \"abusive_or_harmful.harassment_or_bullying\",\n    \"abusive_or_harmful.harassment_or_bullying\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b63f3cc-346f-4f7b-af08-c30b93a36f0a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"webpage_url\": \"<uri>\",\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4379110-a700-4fc6-b4f3-09427897a74e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"webpage_url\": \"<uri>\",\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a95ab20a-1213-4320-918f-f7f03a08d33a",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"webpage_url\": \"<uri>\",\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16a5ded5-7990-479f-bd46-0e071f85a4b7",
+          "name": "Text API - Synchronous",
+          "request": {
+            "name": "Text API - Synchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/sync/v3/content/text\n\nThe Synchronous Text API enables you to send a text item and its context to the Alice T&S platform, which will analyze it, detect violations and return an array of one or more violations detected in the item synchronously. \n\nIf the ID of this text item already exists, then its details are updated.\n\nThe T&S platform analyzes the **text** field.\n\nNote - This API does not support **Promotes Terrorism** violation.\n\n**NOTE** - **Text length is limited to 1024 characters**. Longer texts should be split into segments (by punctuation or spacing) and sent in a separate request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "v3",
+                "content",
+                "text"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"webpage_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12667a4d-e423-4ebb-850a-93031f70a61d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"text to analyze\",\n  \"content_id\": \"entity123\",\n  \"category\": \"chats\",\n  \"thumbnail_url\": \"http://example.com\",\n  \"webpage_url\": \"http://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"entity_id\": \"string\",\n  \"entity_type\": \"content\",\n  \"violations\": [\n    {\n      \"violation_type\": \"abusive_or_harmful.child_grooming\",\n      \"risk_score\": 0.87\n    },\n    {\n      \"violation_type\": \"privacy_violation.PII\",\n      \"risk_score\": 0.87\n    }\n  ],\n  \"confidence\": \"HIGH\",\n  \"language\": \"string\",\n  \"errors\": [\n    {\n      \"violation\": \"string\",\n      \"status\": 400,\n      \"type\": \"Bad request\",\n      \"message\": \"media type invalid: \"\n    },\n    {\n      \"violation\": \"string\",\n      \"status\": 400,\n      \"type\": \"Bad request\",\n      \"message\": \"media type invalid: \"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f52734ad-27a3-41b1-9bc7-6fbe248dbddc",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"text to analyze\",\n  \"content_id\": \"entity123\",\n  \"category\": \"chats\",\n  \"thumbnail_url\": \"http://example.com\",\n  \"webpage_url\": \"http://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa69478e-b39c-4d87-8954-0e45d53c5385",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"text to analyze\",\n  \"content_id\": \"entity123\",\n  \"category\": \"chats\",\n  \"thumbnail_url\": \"http://example.com\",\n  \"webpage_url\": \"http://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07b0364c-b459-45ec-bcfc-8a9618a06b01",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"text to analyze\",\n  \"content_id\": \"entity123\",\n  \"category\": \"chats\",\n  \"thumbnail_url\": \"http://example.com\",\n  \"webpage_url\": \"http://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d1d2265-6352-44ce-9f41-a05b4c461762",
+          "name": "Bulk Text API - Synchronous",
+          "request": {
+            "name": "Bulk Text API - Synchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/sync/v3/content/bulk/text\n\nThe Synchronous Bulk Text API enables you to send a number of text items and their contexts to the Alice T&S platform in a single call, which will then analyze all of them, detect violations and return an array of one or more violations detected in each item synchronously. \n\n Since the number of items analyzed in each request is arbitrary and determined by the sender, there are no SLA guarantees on bulk item requests. \n\nThe T&S platform analyzes the **text** field of each item sent.\n\nNote - This API does not support **Promotes Terrorism** violation.\n\n**NOTE** - **Text length is limited to 1024 characters**. Longer texts should be split into segments (by punctuation or spacing) and sent as separate items.\n\nA bulk request is limited to 100 items maximum. A repeat of the same content_id in items in the same bulk request is **forbidden**, and will fail the duplicated item.\n\n**NOTE** This endpoint does not update items in the ActiveOS platform, and only returns the analysis on the request itself.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "v3",
+                "content",
+                "bulk",
+                "text"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"text\": \"<string>\",\n      \"content_id\": \"<string>\",\n      \"thumbnail_url\": \"<uri>\",\n      \"webpage_url\": \"<uri>\",\n      \"date_created\": \"<number>\",\n      \"user_id\": \"<string>\",\n      \"contained_in\": [\n        {\n          \"collection_id\": \"<string>\",\n          \"collection_type\": \"<string>\"\n        },\n        {\n          \"collection_id\": \"<string>\",\n          \"collection_type\": \"<string>\"\n        }\n      ],\n      \"views_count\": \"<number>\",\n      \"comments_count\": \"<number>\",\n      \"custom_fields\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"response_custom_fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"text\": \"<string>\",\n      \"content_id\": \"<string>\",\n      \"thumbnail_url\": \"<uri>\",\n      \"webpage_url\": \"<uri>\",\n      \"date_created\": \"<number>\",\n      \"user_id\": \"<string>\",\n      \"contained_in\": [\n        {\n          \"collection_id\": \"<string>\",\n          \"collection_type\": \"<string>\"\n        },\n        {\n          \"collection_id\": \"<string>\",\n          \"collection_type\": \"<string>\"\n        }\n      ],\n      \"views_count\": \"<number>\",\n      \"comments_count\": \"<number>\",\n      \"custom_fields\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"response_custom_fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"category\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2736a47c-1ffd-4c05-b9d3-2f2b7bdfdca4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "bulk",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"chats\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"items\": [\n    {\n      \"text\": \"text to analyze\",\n      \"content_id\": \"entity123\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    },\n    {\n      \"text\": \"another text to analyze\",\n      \"content_id\": \"entity456\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"entity_type\": \"user\",\n  \"items\": [\n    {\n      \"entity_id\": \"string\",\n      \"violations\": [\n        {\n          \"violation_type\": \"self_harm.general\",\n          \"risk_score\": 0.87,\n          \"confidence\": \"NotDetected\"\n        },\n        {\n          \"violation_type\": \"abusive_or_harmful.profanity\",\n          \"risk_score\": 0.87,\n          \"confidence\": \"HIGH\"\n        }\n      ],\n      \"language\": \"string\",\n      \"errors\": [\n        {\n          \"violation\": \"string\",\n          \"status\": 400,\n          \"type\": \"Bad request\",\n          \"message\": \"media type invalid: \"\n        },\n        {\n          \"violation\": \"string\",\n          \"status\": 400,\n          \"type\": \"Bad request\",\n          \"message\": \"media type invalid: \"\n        }\n      ]\n    },\n    {\n      \"entity_id\": \"string\",\n      \"violations\": [\n        {\n          \"violation_type\": \"privacy_violation.PII\",\n          \"risk_score\": 0.87,\n          \"confidence\": \"HIGH\"\n        },\n        {\n          \"violation_type\": \"abusive_or_harmful.harassment_or_bullying\",\n          \"risk_score\": 0.87,\n          \"confidence\": \"HIGH\"\n        }\n      ],\n      \"language\": \"string\",\n      \"errors\": [\n        {\n          \"violation\": \"string\",\n          \"status\": 400,\n          \"type\": \"Bad request\",\n          \"message\": \"media type invalid: \"\n        },\n        {\n          \"violation\": \"string\",\n          \"status\": 400,\n          \"type\": \"Bad request\",\n          \"message\": \"media type invalid: \"\n        }\n      ]\n    }\n  ],\n  \"failed_item_indexes\": [\n    8666.086508342978,\n    1940.7967786515424\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bf02e44-c652-4096-bbe9-d7d2085d0484",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "bulk",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"chats\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"items\": [\n    {\n      \"text\": \"text to analyze\",\n      \"content_id\": \"entity123\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    },\n    {\n      \"text\": \"another text to analyze\",\n      \"content_id\": \"entity456\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2df27af-f527-4ddd-bfea-a079587285d1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "bulk",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"chats\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"items\": [\n    {\n      \"text\": \"text to analyze\",\n      \"content_id\": \"entity123\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    },\n    {\n      \"text\": \"another text to analyze\",\n      \"content_id\": \"entity456\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50727538-743f-494a-b6cf-322cbc2d72ec",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "bulk",
+                    "text"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"chats\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"items\": [\n    {\n      \"text\": \"text to analyze\",\n      \"content_id\": \"entity123\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    },\n    {\n      \"text\": \"another text to analyze\",\n      \"content_id\": \"entity456\",\n      \"thumbnail_url\": \"http://example.com\",\n      \"webpage_url\": \"http://example.com\",\n      \"date_created\": 1650886140,\n      \"user_id\": \"user123\",\n      \"views_count\": 0,\n      \"comments_count\": 0,\n      \"custom_fields\": [\n        {}\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f8ab2fb-7c7c-4862-86c5-ee894704b389",
+          "name": "Image API - Synchronous",
+          "request": {
+            "name": "Image API - Synchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/sync/v3/content/image\n\nThe Synchronous Image API enables you to send an image item and its context to the Alice T&S platform, which will analyze it, detect violations and return an array of one or more violations detected in the item synchronously.\n\nIf the ID of this image already exists, then its details are updated.\n\nThe API supports the following file formats: **JPG, PNG, WEBP**.\n**Image file size is limited to 6k - 5MB**.\n\nThe T&S platform analyzes the following fields:\n\nAnalyzed image - **media_url** or **raw_media** fields.\n\nAnalyzed texts - **title** and **description** fields.\n\n**NOTE** - **title field is limited to 1,024 characters and description field is limited to 10,240 characters**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "v3",
+                "content",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc59dd01-5181-436e-8f80-6384064d3107",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"entity123\",\n  \"media_url\": \"https://example.com/image.jpg\",\n  \"category\": \"posts\",\n  \"title\": \"Image title\",\n  \"description\": \"Image description\",\n  \"webpage_url\": \"https://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"entity_id\": \"string\",\n  \"entity_type\": \"user\",\n  \"violations\": [\n    {\n      \"violation_type\": \"abusive_or_harmful.child_abuse\",\n      \"risk_score\": 0.87\n    },\n    {\n      \"violation_type\": \"abusive_or_harmful.hate_speech\",\n      \"risk_score\": 0.87\n    }\n  ],\n  \"confidence\": \"HIGH\",\n  \"language\": \"string\",\n  \"errors\": [\n    {\n      \"violation\": \"string\",\n      \"status\": 400,\n      \"type\": \"Bad request\",\n      \"message\": \"media type invalid: \"\n    },\n    {\n      \"violation\": \"string\",\n      \"status\": 400,\n      \"type\": \"Bad request\",\n      \"message\": \"media type invalid: \"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea47e3cd-a122-42d9-8436-676d1a23214e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"entity123\",\n  \"media_url\": \"https://example.com/image.jpg\",\n  \"category\": \"posts\",\n  \"title\": \"Image title\",\n  \"description\": \"Image description\",\n  \"webpage_url\": \"https://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e45495f-9ff6-49c9-a782-2c2955a1e589",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"entity123\",\n  \"media_url\": \"https://example.com/image.jpg\",\n  \"category\": \"posts\",\n  \"title\": \"Image title\",\n  \"description\": \"Image description\",\n  \"webpage_url\": \"https://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9206be82-e148-4604-87d3-373e2222ace1",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"entity123\",\n  \"media_url\": \"https://example.com/image.jpg\",\n  \"category\": \"posts\",\n  \"title\": \"Image title\",\n  \"description\": \"Image description\",\n  \"webpage_url\": \"https://example.com\",\n  \"date_created\": 1650886140,\n  \"user_id\": \"user123\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"channel\"\n    }\n  ],\n  \"views_count\": 0,\n  \"comments_count\": 0,\n  \"custom_fields\": [\n    {}\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39e24bdd-6fc0-443a-b0d8-f8bd76654711",
+          "name": "Image API - asynchronous",
+          "request": {
+            "name": "Image API - asynchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/v3/content/image\n\nThe Image API enables you to send an image item and its context to the Alice T&S platform, which will analyze it, detect violations and return an array of one or more violations detected in the item. If the ID of this image already exists, then its details are updated.\n\nThe API supports the following file formats: **JPG, PNG, WEBP**.\n**Image file size is limited to 6k - 5MB**.\n\nThe T&S platform analyzes the following fields:\n\nAnalyzed image - **media_url** or **raw_media** fields.\n\nAnalyzed texts - **title** and **description** fields.\n\n**NOTE** - **title field is limited to 1,024 characters and description field is limited to 10,240 characters**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"<string>\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4405a5e-1ffc-44cf-b40e-ed2217b80ff2",
+              "name": "Example response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"analyzed_violations\": [\n    \"abusive_or_harmful.hate_speech\",\n    \"abusive_or_harmful.promotes_terrorism\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a397f302-6686-45c2-b5c5-1a1f8c65c883",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baf88ca7-9a52-4a90-8322-136bc3c1772f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5826172a-d29e-4b8c-a6fc-b72b08e28428",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21a85268-ad3c-41fe-a547-8927a7f51a7d",
+          "name": "Video API - asynchronous",
+          "request": {
+            "name": "Video API - asynchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/v3/content/video\n\nThe Video API enables you to send a video item and its context to the Alice T&S platform, which will analyze it, detect violations and return an array of one or more violations detected in the item. If the ID of this video already exists, then its details are updated.\n\nThe API supports the following file formats: **mp4, mkv, avi**.\n\nVideo length is limited to 30 min.\n\nVideo file size is limited to 1GB.\n\nThe T&S platform analyzes the following fields:\n\nAnalyzed video - **media_url** or **raw_media** fields.\n\nAnalyzed image - **thumbnail_url** field.\n\nAnalyzed texts - **title** and **description** fields.\n\n**NOTE** - **title field is limited to 1,024 characters and description field is limited to 10,240 characters**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                "video"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"<string>\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f726082-1aef-4d89-a514-d5beef12f41c",
+              "name": "Example response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"analyzed_violations\": [\n    \"abusive_or_harmful.graphic_violence\",\n    \"privacy_violation.PII\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53516cb0-f6c9-4e7f-b0d5-2359a8551b07",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11611130-428b-4d44-870f-93c1156268e7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28d97bdd-d71b-4ba5-949c-2523f1dea2e3",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "video"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d05045c4-a57f-4540-9c85-5f09f98917d4",
+          "name": "Audio API - asynchronous",
+          "request": {
+            "name": "Audio API - asynchronous",
+            "description": {
+              "content": "Endpoint: https://api.alice.io/v3/content/audio\n\nThe Audio API enables you to send an audio item and its context to the Alice T&S platform. If the ID of this audio already exists, then its details are updated.\n\nThe Platform supports playing the following file formats: **mp3, WAV, OGG**.\n\nAudio length is limited to 30 min.\n\nAnalyzed audio - **media_url** or **raw_media** fields.\n\nAnalyzed image - **thumbnail_url** field.\n\nAnalyzed texts - **title** and **description** fields.\n\n**NOTE** - **title field is limited to 1,024 characters and description field is limited to 10,240 characters**.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "content",
+                "audio"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"<string>\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"<string>\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22253351-f507-4aa5-a322-61aa185db80f",
+              "name": "Example response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "audio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": \"string\",\n  \"analyzed_violations\": [\n    \"abusive_or_harmful.graphic_violence\",\n    \"privacy_violation.PII\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46c8df4a-de04-4864-a4aa-7869903f098b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "audio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"error\": \"Bad Request\",\n  \"message\": \"\\\\\\\"text\\\\\\\" is required\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"body\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"\\\\\\\"text\\\\\\\" is required\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7394d49f-d9d9-4b26-9ade-598fd1884f38",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "audio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Invalid credentials\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Invalid credentials\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93b2760d-0d52-4587-95a8-8dbd6efd1830",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "content",
+                    "audio"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content_id\": \"<string>\",\n  \"category\": \"<string>\",\n  \"media_url\": \"<uri>\",\n  \"callback_url\": \"<string>\",\n  \"callback_key_name\": \"\\\"my key\",\n  \"webpage_url\": \"<uri>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"thumbnail_url\": \"<uri>\",\n  \"date_created\": \"<number>\",\n  \"views_count\": \"<number>\",\n  \"comments_count\": \"<number>\",\n  \"user_id\": \"<string>\",\n  \"contained_in\": [\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    },\n    {\n      \"collection_id\": \"channel123\",\n      \"collection_type\": \"<string>\"\n    }\n  ],\n  \"custom_fields\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"response_custom_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"raw_media\": \"<string>\",\n  \"mime_type\": \"image/jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 429,\n  \"error\": \"Too Many Requests\",\n  \"message\": \"Too Many Requests\",\n  \"params\": {\n    \"body\": {\n      \"source\": \"string\",\n      \"keys\": [\n        \"string\",\n        \"string\"\n      ],\n      \"message\": \"Too Many Requests\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.alice.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "48c74b35-3993-4cc5-bd70-619fdec4c5ad",
+    "name": "Alice API Documentation Content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# About This Guide\nThis guide provides comprehensive documentation for Alice's API offerings:\n\n**WonderSuite** - Our GenAI protection suite:\n- **WonderBuild**: Red teaming and security assessment tools for AI applications\n- **WonderFence**: Real-time guardrails for AI-generated content\n\n**ActiveFamily** - Our content moderation platform:\n- **ActiveScore**: AI-driven automated detection API that analyzes items and returns risk scores\n- **ActiveOS**: Self-service UI for organizing items, taking automatic or manual actions, and more\n\nAll APIs use a standard REST design, allowing you to use any standard REST client to call our endpoints from your server.\n\n### Run in Postman\nIf you use Postman, you can import the Alice APIs endpoints as a collection into your Postman app, then try out different requests to learn how the API works. Click the following button to get started:\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/24226888-0756580e-fccf-4fc3-8d36-7cc224b9215e?action=collection%2Ffork&collection-url=entityId%3D24226888-0756580e-fccf-4fc3-8d36-7cc224b9215e%26entityType%3Dcollection%26workspaceId%3D4a89e487-a108-4875-9ade-315bd98baf53)\n\n# Authentication\nAn Alice platform account is required to send requests and data to the Alice platform. An Alice representative will open an account for you and send you an email invitation to log in.\n\nThe following describes how to generate an API key, which you must use in the **af-api-key** header of each API request that you send. \n\n\n\n## Generating an API Key – How To\n**To generate an API key –**\n\n1. Click the **Account Settings**  button.\n\n2. Select **DATA MANAGEMENT** and then select **Alice API Keys**. \nA list of the Alice API keys that have already been defined is displayed. \n\n \n3. Click the **Add Key** button. The following displays – \n\n    \n\n4. In the **Key Name** field, enter any free-text name to identify the key.\n\n5. In the **Description** field, enter any free text description of the key.\n\n6. Click the **Generate Key** button. The key is then displayed in the following window – \n\n    \n\n    You must copy the key and should keep it secure, because you will not be able to see it again. Later, if needed you can [regenerate this key](#section/Authentication/Regenerating-a-Key).\n\n7. Click on the key in the **Your API Key** field to copy it to the clipboard. You can now click the **I've copied the key** button.\n\n8. Use this key as the value of an **af-api-key** header that you must add to each request.\n**af-api-key: \"YOUR_API_KEY\"** \n\n ## Regenerating a Key\nRegenerating a key will override the current one. The old one will still be valid for an additional 12 hours. After 12 hours, any request sent with the old key will be rejected.\n\n**To regenerate an Alice API Key –** \n1. Click the **Account Settings**  button. \n2. Select **DATA MANAGEMENT** and then **Alice API Keys**. The following displays – \n\n\n3. Click the **Regenerate**  button on the right side of the API key to be generated.\n\n**Note –** The options to delete a key and/or regenerate an existing one enable you to rotate between two different API keys.\n\n## Editing/Deleting a Key\nOnly the name and description of a key can be edited.\nOnce you delete a key, any request that uses the deleted key will be rejected. \n\n**To delete an Alice API Key –** \n\n1. Click the **Account Settings**  button. \n\n2. Select **DATA MANAGEMENT**, and then **Alice API Keys**. \n\n3. Click the  button on the right side of the API key and select the **Edit** or the **Delete** option.\n\n\nContact Support:\n Name: Support\n Email: support@alice.io",
+      "type": "text/plain"
+    }
+  }
+}

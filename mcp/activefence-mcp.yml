@@ -3,19 +3,29 @@ method: derived
 status: candidate
 source: openapi/activefence-alice-api-openapi.yml
 published_server: null
-published_server_note: >-
-  NO official hosted or remote MCP server was found for ActiveFence/Alice. This file is a
-  DERIVED CANDIDATE tool surface computed from the provider's OpenAPI so an integrator can
-  stand one up. It is deliberately NOT wired as a `type: MCPServer` pointer in apis.yml —
-  the provider does not publish an MCP server and must not be credited with one.
+published_server_note: 'NO official hosted or remote MCP server was found for ActiveFence/Alice. This
+  file is a DERIVED CANDIDATE tool surface computed from the provider''s OpenAPI so an integrator can
+  stand one up. It is deliberately NOT wired as a `type: MCPServer` pointer in apis.yml — the provider
+  does not publish an MCP server and must not be credited with one.'
 probes:
-- {url: 'https://mcp.alice.io/', result: NXDOMAIN}
-- {url: 'https://api.alice.io/mcp', http_status: 404}
-- {url: 'https://alice.io/.well-known/mcp.json', http_status: 404}
-- {source: 'https://api.github.com/orgs/ActiveFence/repos', http_status: 200, finding: '3 public repos — OTLP-GitHubAction-Exporter, parlant-alice, bull. No MCP server.'}
-- {source: 'https://api.github.com/orgs/alice-dot-io/repos', http_status: 200, finding: '1 public repo — caterpillar. No MCP server.'}
-- {source: 'https://alice.io/llms.txt', http_status: 200, finding: 'lists integrations for Bedrock/AgentCore, Strands, LangGraph, Copilot Studio, Databricks, NeMo Guardrails and Parlant — none of them an MCP server.'}
-- {source: 'npm registry search @alice-io', result: '2 packages, neither an MCP server'}
+- url: https://mcp.alice.io/
+  result: NXDOMAIN
+- url: https://api.alice.io/mcp
+  http_status: 404
+- url: https://alice.io/.well-known/mcp.json
+  http_status: 404
+- source: https://api.github.com/orgs/ActiveFence/repos
+  http_status: 200
+  finding: 3 public repos — OTLP-GitHubAction-Exporter, parlant-alice, bull. No MCP server.
+- source: https://api.github.com/orgs/alice-dot-io/repos
+  http_status: 200
+  finding: 1 public repo — caterpillar. No MCP server.
+- source: https://alice.io/llms.txt
+  http_status: 200
+  finding: lists integrations for Bedrock/AgentCore, Strands, LangGraph, Copilot Studio, Databricks, NeMo
+    Guardrails and Parlant — none of them an MCP server.
+- source: npm registry search @alice-io
+  result: 2 packages, neither an MCP server
 transport_if_built: http
 auth_if_built:
   scheme: apiKey
@@ -23,7 +33,8 @@ auth_if_built:
   note: inherits the REST contract; there is no OAuth surface to negotiate
 tools:
 - name: moderate_text
-  description: Analyze a text item for policy violations and return risk scores. Blocks until analysis completes.
+  description: Analyze a text item for policy violations and return risk scores. Blocks until analysis
+    completes.
   source_operation: openapi/activefence-alice-api-openapi.yml#post-sync-content-text
 - name: moderate_text_bulk
   description: Analyze a batch of text items in one synchronous call.
@@ -77,11 +88,16 @@ tools:
   description: Delete an Alice API key by id.
   source_operation: openapi/activefence-alice-api-openapi.yml#delete-api-key
 excluded_from_candidate_surface:
-  note: >-
-    The three api-key tools are included for completeness but SHOULD NOT be exposed to an
-    autonomous agent — see agentic-access/activefence-agentic-access.yml, where key management
-    is the operation class that carries the highest consequence in this API.
+  note: The three api-key tools are included for completeness but SHOULD NOT be exposed to an autonomous
+    agent — see agentic-access/activefence-agentic-access.yml, where key management is the operation class
+    that carries the highest consequence in this API.
 coverage:
   rest_operations_total: 18
   tools_derived: 18
   tools_published_by_provider: 0
+deployment:
+  mode: none
+  verified: derived
+  tools: 18
+  checked: '2026-08-12'
+  source: catalog MCP census
