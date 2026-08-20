@@ -29,6 +29,19 @@ specificationVersion: '0.23'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
+- AI Safety
+- AI Security
+- Trust and Safety
+- Content Moderation
+- Guardrails
+- Red Teaming
+- LLM Security
+- Prompt Injection
+- AI Governance
+- Risk Scoring
+- User Generated Content
+- Child Safety
+tags_raw:
 - ai-safety
 - ai-security
 - trust-and-safety
@@ -50,6 +63,8 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
+  - APIKeys
+  tags_raw:
   - api keys
   properties:
   - type: OpenAPI
@@ -80,6 +95,8 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
+  - Collection
+  tags_raw:
   - collection
   properties:
   - type: OpenAPI
@@ -109,6 +126,8 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
+  - Content
+  tags_raw:
   - content
   properties:
   - type: OpenAPI
@@ -137,6 +156,8 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
+  - Flags
+  tags_raw:
   - flags
   properties:
   - type: OpenAPI
@@ -167,6 +188,8 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
