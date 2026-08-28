@@ -16,6 +16,18 @@ description: >-
   console; the default rate limit is 50 requests per second. First-party SDKs ship for Python
   (wonderfence-sdk) and TypeScript (@alice-io/wonderfence-ts-sdk), with a Parlant integration and
   the open-source Caterpillar agent-skill security scanner. Alice is SOC 2 and ISO 27001 certified.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/69005ca0f0832195cbc1370c/6966208e49b12596bab0f42e_Group%201707480796.png
 url: https://raw.githubusercontent.com/api-evangelist/activefence/refs/heads/main/apis.yml
 x-type: company
