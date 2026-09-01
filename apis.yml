@@ -41,18 +41,18 @@ specificationVersion: '0.23'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
-- ai-safety
-- ai-security
-- trust-and-safety
-- content-moderation
-- guardrails
-- red-teaming
-- llm-security
-- prompt-injection
-- ai-governance
-- risk-scoring
-- user-generated-content
-- child-safety
+- AI Safety
+- AI Security
+- Trust and Safety
+- Content Moderation
+- Guardrails
+- Red Teaming
+- LLM Security
+- Prompt Injection
+- AI Governance
+- Risk Scoring
+- User Generated Content
+- Child Safety
 tags_raw:
 - ai-safety
 - ai-security
@@ -75,7 +75,7 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
-  - api keys
+  - APIKeys
   tags_raw:
   - api keys
   properties:
@@ -138,7 +138,7 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
-  - content
+  - Content
   tags_raw:
   - content
   properties:
@@ -168,7 +168,7 @@ apis:
   humanURL: https://docs.activefence.com/index.html
   baseURL: https://api.alice.io
   tags:
-  - flags
+  - Flags
   tags_raw:
   - flags
   properties:
