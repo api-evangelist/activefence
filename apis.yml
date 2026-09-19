@@ -45,6 +45,10 @@ image: https://cdn.prod.website-files.com/69005ca0f0832195cbc1370c/6966208e49b12
 url: https://raw.githubusercontent.com/api-evangelist/activefence/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
+x-docs-platform: redoc
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
+x-docs-hosting: aws-cloudfront
 x-enrichment:
   date: '2026-08-06'
   status: enriched
