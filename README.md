@@ -64,38 +64,134 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-ActiveFence — now operating as **Alice** — is an AI security, safety and trust & safety company
-headquartered in New York and Tel Aviv. It sells two product families through one REST API at
-`api.alice.io`:
+ActiveFence — now operating as Alice — is an AI security, safety and trust & safety company headquartered in New York and Tel Aviv. It sells two product families through one REST API at api.alice.io: ActiveFamily (ActiveScore automated detection plus the ActiveOS moderation workbench) for user-generated-content trust and safety across text, image, video and audio in 120+ languages and 20+ abuse areas; and WonderSuite for generative-AI protection — WonderBuild (pre-deployment red teaming and adversarial assessment of models, apps and agents), WonderFence (real-time runtime guardrails that evaluate prompts and responses for prompt injection, jailbreaks, PII leakage and policy violations) and WonderCheck (ongoing post-launch evaluation and drift detection). The API offers synchronous endpoints for low-latency moderation and asynchronous endpoints that acknowledge receipt and post results back to a customer-configured callback URL, plus configurable action webhooks fired from the ActiveOS moderation view or an automated workflow. Authentication is a single af-api-key header issued from the platform console; the default rate limit is 50 requests per second. First-party SDKs ship for Python (wonderfence-sdk) and TypeScript (@alice-io/wonderfence-ts-sdk), with a Parlant integration and the open-source Caterpillar agent-skill security scanner. Alice is SOC 2 and ISO 27001 certified.
 
-- **ActiveFamily** — ActiveScore automated detection plus the ActiveOS moderation workbench, for
-  user-generated-content trust and safety across text, image, video and audio in 120+ languages
-  and 20+ abuse areas.
-- **WonderSuite** — generative-AI protection: **WonderBuild** (pre-deployment red teaming),
-  **WonderFence** (real-time runtime guardrails for prompts and responses) and **WonderCheck**
-  (post-launch evaluation and drift detection).
+**Areas:** AI Safety · AI Security · Trust and Safety · Content Moderation · Guardrails · Red Teaming · LLM Security · Prompt Injection · AI Governance · Risk Scoring · User Generated Content · Child Safety
 
-## What this profile is built from
+## ActiveFence on APIs.io
 
-| Surface | Location | Status |
-|---|---|---|
-| OpenAPI 3.0.0 (18 operations) | `https://docs.activefence.com/openapi.json` | 200 — harvested verbatim to `openapi/_original/` |
-| llms.txt | `https://alice.io/llms.txt` | 200 — saved verbatim to `llms/` |
-| Public Postman collection | `https://www.postman.com/activefence-demo-team` | 200 |
-| Python SDK | `wonderfence-sdk` on PyPI | first-party |
-| TypeScript SDK | `@alice-io/wonderfence-ts-sdk` on npm | first-party |
-| CLI | `@alice-io/caterpillar` (agent-skill security scanner) | first-party |
-| Certifications | SOC 2 Type II, ISO 27001 | badged on `alice.io`, asserted in `llms.txt` |
+Everything profiled for ActiveFence is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/activefence/](https://apis.io/providers/activefence/)** — or go straight to one of the APIs or properties below.
 
-**Not published by this provider:** no `/.well-known/` documents on any host, no `security.txt`,
-no A2A agent card, no hosted MCP server, no status page, no changelog, no deprecation policy, no
-AsyncAPI, and no idempotency contract. Each of those is recorded with the URL probed and the
-status it returned — see `well-known/`, `lifecycle/` and `conformance/`.
+### APIs (7)
 
-**Brand transition note:** `www.activefence.com` now redirects to `alice.io`, but the docs host is
-still `docs.activefence.com` and the auth header is still `af-api-key`. Integrators should expect
-both names across the surface.
+- [ActiveFence api keys API](https://apis.io/apis/activefence/activefence-api-keys-api/) — Provides APIs to manage API key(s), including adding new keys, listing existing keys, and deleting keys.
+- [ActiveFence Collection API](https://apis.io/apis/activefence/activefence-collection-api/) — Collection API Represents grouped entities. A collection is comprised of multiple items grouped together in a playlist, album, folder, group or channel on…
+- [ActiveFence Content API](https://apis.io/apis/activefence/activefence-content-api/) — Content APIs Represents WHAT content was created on your platform, such as a post, comment, review, message, article or data. For example, a web page…
+- [ActiveFence Flags API](https://apis.io/apis/activefence/activefence-flags-api/) — The Flags API enables you to send details about the flag made on an item on your platform to the Alice T&S platform.
+- [ActiveFence Users API](https://apis.io/apis/activefence/activefence-users-api/) — Users API Represents WHO created content on your platform. These are the end users that have uploaded content to your platform, meaning the people who are…
+- [ActiveFence Wonder Build API](https://apis.io/apis/activefence/activefence-wonderbuild-api/) — WonderBuild provides red teaming and security assessment tools for AI applications. APIs for running comprehensive security assessments on gen-AI applications.
+- [ActiveFence Wonder Fence API](https://apis.io/apis/activefence/activefence-wonderfence-api/) — WonderFence provides real-time guardrails for AI-generated content. APIs for evaluating and moderating AI-generated content and interactions to protect…
 
-- https://alice.io/
-- https://docs.activefence.com/index.html
-- https://www.hiive.com/securities/activefence-stock
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Activefence Webhooks](https://apis.io/asyncapis/activefence/activefence-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [activefence-mcp.yml](https://apis.io/servers/activefence/activefence-mcp-yml/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Activefence Agentic Access](https://apis.io/agentic-access/activefence/activefence-agentic-access/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Alice API Documentation api keys API](https://apis.io/collections/activefence/open-activefence-api-keys-api/)
+- [Alice API Documentation Collection API](https://apis.io/collections/activefence/open-activefence-collection-api/)
+- [Alice API Documentation Content API](https://apis.io/collections/activefence/open-activefence-content-api/)
+- [Alice API Documentation Flags API](https://apis.io/collections/activefence/open-activefence-flags-api/)
+- [Alice API Documentation Users API](https://apis.io/collections/activefence/open-activefence-users-api/)
+- [Alice API Documentation Wonder Build API](https://apis.io/collections/activefence/open-activefence-wonderbuild-api/)
+- [Alice API Documentation Wonder Fence API](https://apis.io/collections/activefence/open-activefence-wonderfence-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Activefence Alice Api Overlay](https://apis.io/overlays/activefence/activefence-alice-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Activefence Authentication](https://apis.io/security/activefence/activefence-authentication/)
+- [Activefence Domain Security](https://apis.io/security/activefence/activefence-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://alice.io/)
+- [Documentation](https://docs.activefence.com/index.html)
+- [Getting started](https://docs.activefence.com/index.html#section/Authentication)
+- [API reference](https://docs.activefence.com/index.html)
+- [Support](https://alice.io/contact-us)
+- [Blog](https://alice.io/blog)
+- [Terms of service](https://alice.io/terms-of-use)
+- [Privacy policy](https://alice.io/privacy-policy)
+- [GitHub](https://github.com/ActiveFence)
+
+## API Evangelist rating
+
+**Kin Score 51.7** — developing · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 60.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 69.6 |
+| Access clarity | 35.5 |
+
+**Agent readiness 28.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/activefence/](https://apis.io/providers/activefence/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ActiveFence: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/activefence/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
