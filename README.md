@@ -102,7 +102,7 @@ Model Context Protocol servers that expose the API to agents.
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Activefence Agentic Access](https://apis.io/agentic-access/activefence/activefence-agentic-access/)
+- [ActiveFence Agentic Access](https://apis.io/agentic-access/activefence/activefence-agentic-access/)
 
 #### Collections (7)
 
@@ -120,14 +120,20 @@ Postman and Open Collection request collections.
 
 OpenAPI overlays, including conversational phrasing for each operation.
 
-- [Activefence Alice Api Overlay](https://apis.io/overlays/activefence/activefence-alice-api-overlay/)
+- [ActiveFence Alice Api Overlay](https://apis.io/overlays/activefence/activefence-alice-api-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [ActiveFence API Rules](https://apis.io/rules/activefence/activefence-rules/)
 
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Activefence Authentication](https://apis.io/security/activefence/activefence-authentication/)
-- [Activefence Domain Security](https://apis.io/security/activefence/activefence-domain-security/)
+- [ActiveFence Authentication](https://apis.io/security/activefence/activefence-authentication/)
+- [ActiveFence Domain Security](https://apis.io/security/activefence/activefence-domain-security/)
 
 ## Where to find this API
 
@@ -145,18 +151,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 51.7** — developing · rubric 0.25.0 · scored 2026-10-23
+**Kin Score 55.3** — strong · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 73.2 |
 | Contract quality | 60.3 |
-| Contract governance | 18.2 |
-| Operational transparency | 10.5 |
+| Contract governance | 31.8 |
+| Operational transparency | 11.9 |
 | Developer ergonomics | 69.6 |
-| Access clarity | 35.5 |
+| Access clarity | 48.9 |
 
-**Agent readiness 30.4** — agent-ready
+**Agent readiness 34.5** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -166,7 +172,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | MCP Server | — |
 | Auth Clarity | bearer (partial credit) |
 | Idempotency | — |
-| Error Semantics | derived (partial credit) |
+| Error Semantics | verified |
 | OpenAPI Examples | verified |
 | Rate Limit Signal | — |
 | Event Surface Described | yes |
@@ -181,8 +187,12 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Agentic Commerce | — |
 | Pagination Ratio | partial |
 | Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 23.5** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/activefence/](https://apis.io/providers/activefence/).
 
